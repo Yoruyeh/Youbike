@@ -1,0 +1,21 @@
+$xs: 640px;
+$md: 768px;
+$lg: 1024px;
+
+@mixin xs {
+  @media screen and (min-width: $xs) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: $md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: $lg) {
+    @content;
+  }
+}
