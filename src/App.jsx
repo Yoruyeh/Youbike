@@ -12,6 +12,7 @@ function App() {
           <Route path="stations" element={<Stations />}></Route>
           <Route path="news"></Route>
           <Route path="events"></Route>
+          <Route path="login"></Route>
         </Route>
         <Route path="*"></Route>
       </Routes>

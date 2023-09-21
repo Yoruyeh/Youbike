@@ -30,7 +30,9 @@ const Layout = () => {
         <div className={styles.menu}>
           <Menu />
         </div>
-        <button className={styles.loginbtn}>登入</button>
+        <NavLink to="login">
+          <button className={styles.loginbtn}>登入</button>
+        </NavLink>
       </header>
       <hr />
       <main>
