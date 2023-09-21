@@ -80,3 +80,26 @@ export const TaipeDistricts = [
     title: '臺大公館校區'
   }
 ]
+
+export const TableHeader = [
+  {
+    id: '1',
+    title: '縣市'
+  },
+  {
+    id: '2',
+    title: '區域'
+  },
+  {
+    id: '3',
+    title: '站點名稱'
+  },
+  {
+    id: '4',
+    title: '可借車輛'
+  },
+  {
+    id: '5',
+    title: '可還空位'
+  }
+]

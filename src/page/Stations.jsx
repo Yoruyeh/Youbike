@@ -1,10 +1,10 @@
 import styles from './stations.module.scss'
-import CheckBox from '../components/checkBox/CheckBox'
+import StationsTable from '../components/stationsTable/StationsTable'
 
 const Stations = () => {
   return (
     <div className={styles.stations}>
-      <CheckBox />
+      <StationsTable />
     </div>
   )
 }
