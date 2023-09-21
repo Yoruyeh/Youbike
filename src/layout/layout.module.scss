@@ -2,6 +2,8 @@
 @import '../styles/variables.scss';
 
 .app {
+  width: 100vw;
+  height: 100vh;
   padding: 0 2rem;
   position: relative;
 
@@ -31,12 +33,47 @@
     display: none;
   }
 
-  .menu {
-    cursor: pointer;
+  .opened {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $main;
+    color: $white;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .navList {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      font-size: 1.125rem;
+    }
+
+    .active {
+      color: $secondary;
+    }
   }
 
   .loginbtn {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 40px;
+    border-radius: 100px;
+    border: none;
+    background-color: $white;
+    color: $main;
+    font-size: 1.125rem;
+    cursor: pointer;
+  }
+
+  .menu {
+    cursor: pointer;
   }
 }
 
@@ -67,17 +104,8 @@
         }
 
         .loginbtn {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 85px;
-          height: 40px;
-          border-radius: 100px;
-          border: none;
           background-color: $main;
           color: $white;
-          font-size: 1.125rem;
-          cursor: pointer;
         }
       }
 
