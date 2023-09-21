@@ -26,13 +26,13 @@ const Layout = () => {
               </NavLink>
             ))}
           </ul>
+          <NavLink to="login">
+            <button className={styles.loginbtn}>登入</button>
+          </NavLink>
         </nav>
         <div className={styles.menu}>
           <Menu />
         </div>
-        <NavLink to="login">
-          <button className={styles.loginbtn}>登入</button>
-        </NavLink>
       </header>
       <hr />
       <main>

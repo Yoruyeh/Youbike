@@ -42,42 +42,48 @@
 
 @include md {
   .app {
-    .navbar {
-      display: flex;
-      position: absolute;
-      left: 20%;
+    header {
+      justify-content: flex-start;
+      gap: 3.75rem;
 
-      .navList {
+      .navbar {
+        width: 100%;
         display: flex;
-        gap: 2.5rem;
-        font-size: 1.125rem;
+        justify-content: space-between;
+        align-items: center;
 
-        .navItem {
-          color: $secondary;
+        .navList {
+          display: flex;
+          gap: 2.5rem;
+          font-size: 1.125rem;
+
+          .navItem {
+            color: $secondary;
+          }
+
+          .active {
+            color: $main;
+          }
         }
 
-        .active {
-          color: $main;
+        .loginbtn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 85px;
+          height: 40px;
+          border-radius: 100px;
+          border: none;
+          background-color: $main;
+          color: $white;
+          font-size: 1.125rem;
+          cursor: pointer;
         }
       }
-    }
 
-    .menu {
-      display: none;
-    }
-
-    .loginbtn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 85px;
-      height: 40px;
-      border-radius: 100px;
-      border: none;
-      background-color: $main;
-      color: $white;
-      font-size: 1.125rem;
-      cursor: pointer;
+      .menu {
+        display: none;
+      } 
     }
   }
 }
