@@ -4,7 +4,7 @@ import CheckBox from '../components/checkBox/CheckBox'
 const Stations = () => {
   return (
     <div className={styles.stations}>
-      <CheckBox id={'dist'} name={'dist'} />
+      <CheckBox />
     </div>
   )
 }
