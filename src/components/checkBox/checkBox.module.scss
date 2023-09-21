@@ -1,0 +1,53 @@
+@import "../../styles/variables.scss";
+
+.checkbox {
+  padding: 11px 0 11px 11px;
+  width: 93px;
+  height: 40px;
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    line-height: 1rem;
+    cursor: pointer;
+  }
+
+  input, svg {
+    display: none;
+  }
+
+  .checkboxIcon {
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid $gray;
+    border-radius: 2px;
+    background-color: transparent;
+    transition: background-color 0.2s;
+    position: relative;
+  }
+
+  input:checked ~ .checkboxIcon {
+    background-color: $main;
+    border: none;
+
+    svg {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  input:checked ~ .checkboxIcon::before {
+    content: '';
+    color: $white;
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

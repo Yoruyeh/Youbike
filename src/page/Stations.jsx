@@ -1,16 +1,10 @@
 import styles from './stations.module.scss'
-import SelectButton from '../components/selectButton/SelectButton'
-import DropDown from '../components/dropDown/DropDown'
+import CheckBox from '../components/checkBox/CheckBox'
 
 const Stations = () => {
   return (
     <div className={styles.stations}>
-      <h1>Stations</h1>
-      <div style={{ position: 'relative' }}>
-        <SelectButton defaultValue={'台北車站'}>
-          <DropDown />
-        </SelectButton>
-      </div>
+      <CheckBox id={'dist'} name={'dist'} />
     </div>
   )
 }
