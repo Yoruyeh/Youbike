@@ -1,12 +1,5 @@
-$xs: 640px;
-$md: 768px;
+$md: 840px;
 $lg: 1024px;
-
-@mixin xs {
-  @media screen and (min-width: $xs) {
-    @content;
-  }
-}
 
 @mixin md {
   @media screen and (min-width: $md) {

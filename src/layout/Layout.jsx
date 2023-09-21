@@ -13,10 +13,16 @@ const Layout = () => {
         <nav className={styles.navbar}>
           <ul className={styles.navList}>
             {navbarItems.map((item) => (
-              <NavLink to={item.link}>
-                <li className={styles.navItem} key={item.id}>
-                  {item.title}
-                </li>
+              <NavLink
+                key={item.id}
+                to={item.link}
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.navItem} ${styles.active}`
+                    : `${styles.navItem}`
+                }
+              >
+                <li>{item.title}</li>
               </NavLink>
             ))}
           </ul>
@@ -24,7 +30,9 @@ const Layout = () => {
         <div className={styles.menu}>
           <Menu />
         </div>
+        <button className={styles.loginbtn}>登入</button>
       </header>
+      <hr />
       <main>
         <Outlet />
       </main>
