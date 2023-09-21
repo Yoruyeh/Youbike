@@ -12,7 +12,7 @@ export const navbarItems = [
   {
     id: '3',
     title: '站點資訊',
-    link: 'station'
+    link: 'stations'
   },
   {
     id: '4',
