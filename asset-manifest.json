@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/youbike/static/css/main.073c9b0a.css",
-    "main.js": "/youbike/static/js/main.feeea9ac.js",
-    "static/js/787.fb2ee381.chunk.js": "/youbike/static/js/787.fb2ee381.chunk.js",
-    "static/media/logo.svg": "/youbike/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/youbike/static/css/main.1198f042.css",
+    "main.js": "/youbike/static/js/main.f14b3118.js",
+    "static/media/logo.svg": "/youbike/static/media/logo.19cacbc26d484bc267ff15b0b5242588.svg",
     "index.html": "/youbike/index.html",
-    "main.073c9b0a.css.map": "/youbike/static/css/main.073c9b0a.css.map",
-    "main.feeea9ac.js.map": "/youbike/static/js/main.feeea9ac.js.map",
-    "787.fb2ee381.chunk.js.map": "/youbike/static/js/787.fb2ee381.chunk.js.map"
+    "static/media/search_24px.svg": "/youbike/static/media/search_24px.ecf9572cb85b48d21d30a3ec686a1a70.svg",
+    "static/media/close_24px.svg": "/youbike/static/media/close_24px.095e20f7e949488a32c787bb81bf738d.svg",
+    "static/media/menu_24px.svg": "/youbike/static/media/menu_24px.4966ca2d3fb1751c1910f87b8e1192dd.svg",
+    "static/media/check_small.svg": "/youbike/static/media/check_small.d8c6d2f404a8752012cd16bd62af5392.svg",
+    "static/media/arrow_dropdown.svg": "/youbike/static/media/arrow_dropdown.f0e3055df773b748fdba760cb15a22d5.svg",
+    "main.1198f042.css.map": "/youbike/static/css/main.1198f042.css.map",
+    "main.f14b3118.js.map": "/youbike/static/js/main.f14b3118.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.feeea9ac.js"
+    "static/css/main.1198f042.css",
+    "static/js/main.f14b3118.js"
   ]
 }
