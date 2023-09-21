@@ -6,9 +6,10 @@ const Stations = () => {
   return (
     <div className={styles.stations}>
       <h1>Stations</h1>
-      <div style={{position: 'relative'}}>
-        <SelectButton defaultValue={'台北車站'} />
-        <DropDown />
+      <div style={{ position: 'relative' }}>
+        <SelectButton defaultValue={'台北車站'}>
+          <DropDown />
+        </SelectButton>
       </div>
     </div>
   )

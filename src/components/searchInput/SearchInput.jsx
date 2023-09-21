@@ -1,7 +1,7 @@
 import styles from './searchInput.module.scss'
 import { Search } from '../../assets/icons'
 
-const SearchInput = ({ placeholder, value, name, onChange }) => {
+const SearchInput = ({ placeholder, value, name, onChange, children }) => {
   return (
     <div className={styles.search}>
       <input
@@ -12,6 +12,7 @@ const SearchInput = ({ placeholder, value, name, onChange }) => {
         onChange={(e) => onChange?.(e)}
       />
       <Search />
+      {children}
     </div>
   )
 }
