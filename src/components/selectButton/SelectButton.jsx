@@ -2,10 +2,10 @@ import styles from './selectButton.module.scss'
 import { ArrowDown } from '../../assets/icons'
 
 const SelectButton = ({
-  defaultValue, children
+  defaultValue, children, onClick
 }) => {
   return (
-    <div className={styles.selectBtn}>
+    <div className={styles.selectBtn} onClick={onClick}>
       {defaultValue}
       <ArrowDown />
       {children}

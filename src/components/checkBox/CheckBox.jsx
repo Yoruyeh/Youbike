@@ -16,7 +16,7 @@ const CheckBox = ({ name, value, onChange, checked }) => {
         <div className={styles.checkboxIcon}>
           <Check />
         </div>
-        松山區
+        {name}
       </label>
     </div>
   )
