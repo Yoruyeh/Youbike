@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom"
+
 export const navbarItems = [
   {
     id: '1',
@@ -103,3 +105,9 @@ export const TableHeader = [
     title: '可還空位'
   }
 ]
+
+export const GetPageTitle = () => {
+   const { pathname } = useLocation()
+   const page = navbarItems.find((item) => pathname.includes(item.link))
+   return page.title
+}
