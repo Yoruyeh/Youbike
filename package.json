@@ -1,7 +1,7 @@
 {
   "name": "youbike",
   "version": "0.1.0",
-  "homepage": "https://yoruyeh.github.io/youbike",
+  "homepage": "https://yoruyeh.github.io/Youbike",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
