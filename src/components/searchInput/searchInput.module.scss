@@ -10,6 +10,7 @@
   border-radius: 0.5rem;
   background-color: $bg-gray;
   position: relative;
+  z-index: -1;
 
   input {
     width: 95%;
