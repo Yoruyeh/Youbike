@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
 
 .dropdown {
   padding: 1rem;
@@ -32,6 +33,14 @@
     .item {
       font-size: 1rem;
       font-weight: 400;
+    }
+  }
+
+  @include md {
+    .list {
+      .item {
+        font-size: 1.125rem;
+      }
     }
   }
 }

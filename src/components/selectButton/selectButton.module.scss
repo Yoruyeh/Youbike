@@ -1,9 +1,14 @@
 @import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
 
 .selectBtn {
   composes: search from "../searchInput/searchInput.module.scss";
   font-size: 1rem;
-  line-height: 1rem;
   color: $black;
   cursor: pointer;
+
+   @include md {
+    width: 175px;
+    font-size: 1.125rem;
+  }
 }
