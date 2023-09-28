@@ -7,11 +7,11 @@ function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="guide"></Route>
-          <Route path="rate"></Route>
+          <Route path="guide" element={<Stations />}></Route>
+          <Route path="rate" element={<Stations />}></Route>
           <Route path="stations" element={<Stations />}></Route>
-          <Route path="news"></Route>
-          <Route path="events"></Route>
+          <Route path="news" element={<Stations />}></Route>
+          <Route path="events" element={<Stations />}></Route>
           <Route path="login"></Route>
         </Route>
         <Route path="*"></Route>
