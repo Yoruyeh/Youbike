@@ -15,13 +15,15 @@ const StationsTable = ({ selectedCity, stationsData }) => {
         <tbody className={styles.body}>
           {stationsData?.length > 0 &&
             stationsData.map((data) => (
-              <tr key={data.id}>
-                <td>{selectedCity}</td>
-                <td>{data.area}</td>
-                <td>{data.name}</td>
-                <td>{data.rent_available}</td>
-                <td>{data.return_available}</td>
-              </tr>
+              data.stations.map(station => (
+                 <tr key={station.id}>
+                   <td>{selectedCity}</td>
+                   <td>{station.area}</td>
+                   <td>{station.name}</td>
+                   <td>{station.rent_available}</td>
+                   <td>{station.return_available}</td>
+                 </tr>
+              ))
             ))}
         </tbody>
       </table>

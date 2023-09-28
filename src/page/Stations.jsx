@@ -13,11 +13,27 @@ const Stations = () => {
   const [openDropDown, setOpenDropDown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('臺北市')
   const [stationsData, setStationsData] = useState([])
+  // const [selectedArea, setSelectedArea] = useState([])
+
+  // const handleCheck = (e) => {
+  //   const isChecked = e.checked
+  //   const value = e.value
+  //   if (isChecked) {
+  //     setSelectedArea((prev) => [...prev, value])
+  //   } 
+  //   if (!isChecked) {
+  //     setSelectedArea((prev) => {
+  //       return (
+  //         prev.filter(item => item !== value)
+  //       )
+  //     })
+  //   }
+  // }
 
   useEffect(() => {
     const fetchDataAsync = async () => {
       const data = await Main()
-      setStationsData(data.stations)
+      setStationsData(data.location)
     }
     fetchDataAsync()
   }, [])
@@ -45,7 +61,11 @@ const Stations = () => {
             <CheckBox name={'全部勾選'} />
             {selectedCity === '臺北市' &&
               TaipeiDistricts.map((dist) => (
-                <CheckBox key={dist.id} name={dist.title} />
+                <CheckBox
+                  key={dist.id}
+                  name={dist.title}
+                  // onChange={(e) => handleCheck(e)}
+                />
               ))}
           </div>
         </div>
@@ -53,7 +73,10 @@ const Stations = () => {
           <img src={BikingImg} alt="biking" />
         </div>
       </div>
-      <StationsTable selectedCity={selectedCity} stationsData={stationsData} />
+      <StationsTable
+        selectedCity={selectedCity}
+        stationsData={stationsData}
+      />
     </div>
   )
 }

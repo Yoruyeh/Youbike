@@ -1,7 +1,7 @@
 import styles from './checkBox.module.scss'
 import { Check } from '../../assets/icons'
 
-const CheckBox = ({ name, value, onChange, checked }) => {
+const CheckBox = ({ name, onChange, checked }) => {
   return (
     <div className={styles.checkbox}>
       <label htmlFor={name}>
@@ -9,8 +9,8 @@ const CheckBox = ({ name, value, onChange, checked }) => {
           type="checkbox"
           id={name}
           name={name}
-          value={value}
-          onChange={(e) => onChange?.(e.target.checked)}
+          value={name}
+          onChange={(e) => onChange?.(e.target)}
           checked={checked}
         />
         <div className={styles.checkboxIcon}>
