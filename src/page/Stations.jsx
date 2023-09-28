@@ -14,20 +14,54 @@ const Stations = () => {
   const [selectedCity, setSelectedCity] = useState('臺北市')
   const [stationsData, setStationsData] = useState([])
   const [selectedArea, setSelectedArea] = useState([])
+  const [checkedArea, setCheckedArea] = useState(
+    TaipeiDistricts.map((dist) => {
+      return {
+        [dist.title]: false
+      }
+    })
+  )
+  const [checkAll, setCheckAll] = useState(false)
 
   const handleCheck = (e) => {
-    const isChecked = e.checked
-    const value = e.value
-    if (isChecked) {
-      setSelectedArea((prev) => [...prev, value])
-    } 
-    if (!isChecked) {
-      setSelectedArea((prev) => {
-        return (
-          prev.filter(item => item !== value)
-        )
+    const { value, checked } = e
+    if (value === '全部勾選') {
+      setCheckAll(checked)
+      const updatedArea = checkedArea.map((area) => {
+        let key = Object.keys(area)[0]
+        return {
+          [key]: checked
+        }
       })
+      setCheckedArea(updatedArea)
+
+      const areas = updatedArea
+        .filter((area) => Object.values(area)[0] === true)
+        .map((item) => Object.keys(item)[0])
+      setSelectedArea(areas)
+
+      return
+    } 
+
+    if (value !== '全部勾選' && checkAll) {
+      setCheckAll(false)
     }
+    
+    const updatedArea = checkedArea.map((area) => {
+      if (value in area) {
+        return {
+          [value]: checked
+        }
+      } else {
+        return area
+      }
+    })
+    setCheckedArea(updatedArea)
+  
+    const areas = updatedArea
+      .filter((area) => Object.values(area)[0] === true)
+      .map((item) => Object.keys(item)[0])
+    setSelectedArea(areas)
   }
 
   useEffect(() => {
@@ -60,13 +94,16 @@ const Stations = () => {
           <div className={styles.checkboxWrapper}>
             <CheckBox
               name={'全部勾選'}
+              onChange={(e) => handleCheck(e)}
+              checked={checkAll}
             />
             {selectedCity === '臺北市' &&
-              TaipeiDistricts.map((dist) => (
+              checkedArea.map((area) => (
                 <CheckBox
-                  key={dist.id}
-                  name={dist.title}
+                  key={Object.keys(area)[0]}
+                  name={Object.keys(area)[0]}
                   onChange={(e) => handleCheck(e)}
+                  checked={Object.values(area)[0]}
                 />
               ))}
           </div>
