@@ -1,7 +1,9 @@
 import axios from "axios"
 
 const ProcessData = async (rawData) => {
-  const newData = rawData.map(data => {
+  const cityName = '臺北市'
+
+  const stationData = rawData.map(data => {
     const stationName = data.sna.slice(11)
     return {
       id: data.sno,
@@ -15,7 +17,10 @@ const ProcessData = async (rawData) => {
     }
   })
 
-  return newData
+  return {
+    cityName,
+    stations: stationData
+  }
 }
 
 const Main = async () => {
@@ -25,7 +30,7 @@ const Main = async () => {
     )
     
     const processedData = await ProcessData(data)
-   
+    
     return processedData
     
   } catch (error) {

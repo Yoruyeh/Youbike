@@ -28,7 +28,7 @@ export const navbarItems = [
   }
 ]
 
-export const TaipeDistricts = [
+export const TaipeiDistricts = [
   {
     id: '1',
     title: '大安區'

@@ -1,16 +1,21 @@
 import styles from './stations.module.scss'
 import StationsTable from '../components/stationsTable/StationsTable'
-import { GetPageTitle, TaipeDistricts } from '../utils/helpers'
+import { GetPageTitle, TaipeiDistricts } from '../utils/helpers'
 import SearchInput from '../components/searchInput/SearchInput'
 import SelectButton from '../components/selectButton/SelectButton'
 import CheckBox from '../components/checkBox/CheckBox'
 import DropDown from '../components/dropDown/DropDown'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BikingImg from '../assets/images/image.png'
+import Main from '../api/process-rawData'
 
 const Stations = () => {
   const [openDropDown, setOpenDropDown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('臺北市')
+
+  useEffect(() => {
+    Main()
+  }, [])
 
   return (
     <div className={styles.stations}>
@@ -33,7 +38,7 @@ const Stations = () => {
           </div>
           <div className={styles.checkboxWrapper}>
             <CheckBox name={'全部勾選'} />
-            {TaipeDistricts.map((dist) => (
+            {selectedCity === '臺北市' && TaipeiDistricts.map((dist) => (
               <CheckBox key={dist.id} name={dist.title} />
             ))}
           </div>
