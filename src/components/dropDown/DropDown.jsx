@@ -1,18 +1,20 @@
 import styles from './dropDown.module.scss'
+import { TaiwanCities } from '../../utils/helpers'
 
-const DropDown = () => {
+const DropDown = ({ selectedCity, onClick }) => {
   return (
     <div className={styles.dropdown}>
       <ul className={styles.list}>
-        <li className={styles.item}>台北市</li>
-        <li className={styles.item}>台北市</li>
-        <li className={styles.item}>台北市</li>
-        <li className={styles.item}>台北市</li>
-        <li className={styles.item}>台北市</li>
-        <li className={styles.item}>台北市</li>
-        <li className={styles.item}>台北市</li>
-        <li className={styles.item}>台北市</li>
-        <li className={styles.item}>台北市</li>
+        {TaiwanCities.map((city) => (
+          <li
+            className={styles.item}
+            key={city.id}
+            style={{ color: selectedCity === city.cityName ? '#B5CC22' : '' }}
+            onClick={() => onClick(city.cityName)}
+          >
+            {city.cityName}
+          </li>
+        ))}
       </ul>
     </div>
   )

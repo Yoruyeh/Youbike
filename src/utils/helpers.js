@@ -83,6 +83,93 @@ export const TaipeDistricts = [
   }
 ]
 
+export const TaiwanCities = [
+  {
+    id: '1',
+    cityName: '宜蘭縣'
+  },
+  {
+    id: '2',
+    cityName: '嘉義市'
+  },
+  {
+    id: '3',
+    cityName: '屏東縣'
+  },
+  {
+    id: '4',
+    cityName: '苗栗縣'
+  },
+  {
+    id: '5',
+    cityName: '雲林縣'
+  },
+  {
+    id: '6',
+    cityName: '臺東縣'
+  },
+  {
+    id: '7',
+    cityName: '臺北市'
+  },
+  {
+    id: '8',
+    cityName: '金門縣'
+  },
+  {
+    id: '9',
+    cityName: '桃園市'
+  },
+  {
+    id: '10',
+    cityName: '彰化縣'
+  },
+  {
+    id: '11',
+    cityName: '嘉義縣'
+  },
+  {
+    id: '12',
+    cityName: '高雄市'
+  },
+  {
+    id: '13',
+    cityName: '基隆市'
+  },
+  {
+    id: '14',
+    cityName: '臺南市'
+  },
+  {
+    id: '15',
+    cityName: '南投縣'
+  },
+  {
+    id: '16',
+    cityName: '臺中市'
+  },
+  {
+    id: '17',
+    cityName: '新竹縣'
+  },
+  {
+    id: '18',
+    cityName: '花蓮縣'
+  },
+  {
+    id: '19',
+    cityName: '連江縣'
+  },
+  {
+    id: '20',
+    cityName: '澎湖縣'
+  },
+  {
+    id: '21',
+    cityName: '新北市'
+  }
+]
+
 export const TableHeader = [
   {
     id: '1',

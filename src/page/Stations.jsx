@@ -10,6 +10,7 @@ import BikingImg from '../assets/images/image.png'
 
 const Stations = () => {
   const [openDropDown, setOpenDropDown] = useState(false)
+  const [selectedCity, setSelectedCity] = useState('臺北市')
 
   return (
     <div className={styles.stations}>
@@ -19,10 +20,15 @@ const Stations = () => {
           <div className={styles.inputWrapper}>
             <SearchInput placeholder={'搜尋站點'} />
             <SelectButton
-              defaultValue={'台灣大學'}
+              defaultValue={selectedCity}
               onClick={() => setOpenDropDown(!openDropDown)}
             >
-              {openDropDown && <DropDown />}
+              {openDropDown && (
+                <DropDown
+                  selectedCity={selectedCity}
+                  onClick={(city) => setSelectedCity(city)}
+                />
+              )}
             </SelectButton>
           </div>
           <div className={styles.checkboxWrapper}>
