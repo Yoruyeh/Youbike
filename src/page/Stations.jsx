@@ -12,9 +12,14 @@ import Main from '../api/process-rawData'
 const Stations = () => {
   const [openDropDown, setOpenDropDown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('臺北市')
+  const [stationsData, setStationsData] = useState([])
 
   useEffect(() => {
-    Main()
+    const fetchDataAsync = async () => {
+      const data = await Main()
+      setStationsData(data.stations)
+    }
+    fetchDataAsync()
   }, [])
 
   return (
@@ -38,16 +43,17 @@ const Stations = () => {
           </div>
           <div className={styles.checkboxWrapper}>
             <CheckBox name={'全部勾選'} />
-            {selectedCity === '臺北市' && TaipeiDistricts.map((dist) => (
-              <CheckBox key={dist.id} name={dist.title} />
-            ))}
+            {selectedCity === '臺北市' &&
+              TaipeiDistricts.map((dist) => (
+                <CheckBox key={dist.id} name={dist.title} />
+              ))}
           </div>
         </div>
         <div className={styles.image}>
           <img src={BikingImg} alt="biking" />
         </div>
       </div>
-      <StationsTable />
+      <StationsTable selectedCity={selectedCity} stationsData={stationsData} />
     </div>
   )
 }

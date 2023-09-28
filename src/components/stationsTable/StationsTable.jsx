@@ -1,7 +1,7 @@
 import styles from './stationsTable.module.scss'
 import { TableHeader } from '../../utils/helpers'
 
-const StationsTable = () => {
+const StationsTable = ({ selectedCity, stationsData }) => {
   return (
     <div className={styles.table}>
       <table>
@@ -13,72 +13,16 @@ const StationsTable = () => {
           </tr>
         </thead>
         <tbody className={styles.body}>
-          <tr>
-            <td>台北市</td>
-            <td>松山區</td>
-            <td>
-              台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市
-              台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市台北市
-            </td>
-            <td>12</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>台北市</td>
-            <td>大安區</td>
-            <td>台北市台北市台北市台北市台北市</td>
-            <td>15</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>台北市</td>
-            <td>大安區</td>
-            <td>台北市台北市台北市台北市台北市</td>
-            <td>15</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>台北市</td>
-            <td>大安區</td>
-            <td>台北市台北市台北市台北市台北市</td>
-            <td>15</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>台北市</td>
-            <td>大安區</td>
-            <td>台北市台北市台北市台北市台北市</td>
-            <td>15</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>台北市</td>
-            <td>大安區</td>
-            <td>台北市台北市台北市台北市台北市</td>
-            <td>15</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>台北市</td>
-            <td>大安區</td>
-            <td>台北市台北市台北市台北市台北市</td>
-            <td>15</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>台北市</td>
-            <td>大安區</td>
-            <td>台北市台北市台北市台北市台北市</td>
-            <td>15</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>台北市</td>
-            <td>大安區</td>
-            <td>台北市台北市台北市台北市台北市</td>
-            <td>15</td>
-            <td>17</td>
-          </tr>
+          {stationsData?.length > 0 &&
+            stationsData.map((data) => (
+              <tr key={data.id}>
+                <td>{selectedCity}</td>
+                <td>{data.area}</td>
+                <td>{data.name}</td>
+                <td>{data.rent_available}</td>
+                <td>{data.return_available}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
