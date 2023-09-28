@@ -15,7 +15,7 @@ const Layout = () => {
         </div>
         <nav
           className={
-            openMenu ? `${styles.navbar} ${styles.opened}` : `${styles.navbar}`
+            openMenu ? `${styles.opened}` : `${styles.navbar}`
           }
         >
           <ul className={styles.navList}>

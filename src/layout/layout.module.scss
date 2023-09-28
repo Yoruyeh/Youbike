@@ -3,7 +3,7 @@
 
 .app {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   padding: 0 2rem;
   position: relative;
 
@@ -45,6 +45,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 99;
 
     .navList {
       display: flex;
