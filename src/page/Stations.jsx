@@ -20,7 +20,6 @@ const Stations = () => {
   const [searchInput, setSearchInput] = useState('')
   const [searchedStation, setSearchedStation] = useState([])
   const searchInputRef = useRef(null)
-  const [isFocused, setIsFocused] = useState(false)
   
   const handleCheck = (e) => {
     const { value, checked } = e
@@ -99,27 +98,22 @@ const Stations = () => {
     )
   }, [selectedCity])
 
-  useEffect(() => {
-    const input = searchInputRef.current
-    
-    input.addEventListener('focus', function () {
-      setIsFocused(true)
-    })
+   useEffect(() => {
+     const handleClickOutside = (e) => {
+       if (
+         searchInputRef.current &&
+         !searchInputRef.current.contains(e.target)
+       ) {
+         setSearchedStation([])
+       }
+     }
 
-    input.addEventListener('blur', function () {
-      setIsFocused(false)
-    })
-
-    return () => {
-      input.removeEventListener('focus', function () {
-        setIsFocused(true)
-      })
-
-      input.removeEventListener('blur', function () {
-        setIsFocused(false)
-      })
-    }
-  }, [])
+     document.addEventListener('mousedown', handleClickOutside)
+     // 移除監聽
+     return () => {
+       document.removeEventListener('mousedown', handleClickOutside)
+     }
+   }, [])
 
   return (
     <div className={styles.stations}>
@@ -131,8 +125,11 @@ const Stations = () => {
               searchInputRef={searchInputRef}
               placeholder={'搜尋站點'}
               value={searchInput}
-              isFocused={isFocused}
               onChange={(e) => handleSearch(e.value)}
+              onClick={() => {
+                setSearchInput('')
+                setSearchedStation([])
+              }}
             >
               {searchedStation?.length > 0 && (
                 <SearchInputDropDown

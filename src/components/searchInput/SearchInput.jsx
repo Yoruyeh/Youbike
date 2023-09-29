@@ -7,23 +7,23 @@ const SearchInput = ({
   onChange,
   children,
   searchInputRef,
-  isFocused
+  onClick
 }) => {
   return (
-    <div className={styles.search}>
+    <div className={styles.search} ref={searchInputRef}>
       <input
-        ref={searchInputRef}
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange?.(e.target)}
       />
-      {isFocused && value && (
-        <div className={styles.icon}>
+      {value ? (
+        <div className={styles.icon} onClick={onClick}>
           <Close />
         </div>
+      ) : (
+        <Search />
       )}
-      {(!isFocused || !value) && <Search />}
       {children}
     </div>
   )
