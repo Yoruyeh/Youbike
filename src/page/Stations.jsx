@@ -1,6 +1,6 @@
 import styles from './stations.module.scss'
 import StationsTable from '../components/stationsTable/StationsTable'
-import { GetPageTitle, TaipeiDistricts } from '../utils/helpers'
+import { GetPageTitle, TaiwanCities } from '../utils/helpers'
 import SearchInput from '../components/searchInput/SearchInput'
 import SelectButton from '../components/selectButton/SelectButton'
 import CheckBox from '../components/checkBox/CheckBox'
@@ -13,17 +13,17 @@ const Stations = () => {
   const [openDropDown, setOpenDropDown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('臺北市')
   const [stationsData, setStationsData] = useState([])
-  const [selectedArea, setSelectedArea] = useState(
-    TaipeiDistricts.map((dist) => dist.title)
-  )
-  const [checkedArea, setCheckedArea] = useState(
-    TaipeiDistricts.map((dist) => {
-      return {
-        [dist.title]: true
-      }
-    })
-  )
+  const [selectedArea, setSelectedArea] = useState([])
+  const [checkedArea, setCheckedArea] = useState([])
   const [checkAll, setCheckAll] = useState(true)
+  
+  const handleSelectCity = (city) => {
+    setSelectedCity(city)
+    const selected = TaiwanCities.filter(
+      (data) => data.cityName === selectedCity
+    )[0].districts
+    setSelectedArea(selected)
+  }
 
   const handleCheck = (e) => {
     const { value, checked } = e
@@ -78,6 +78,20 @@ const Stations = () => {
     fetchDataAsync()
   }, [selectedArea])
 
+  useEffect(() => {
+    const areaArr = TaiwanCities.filter(
+      (data) => data.cityName === selectedCity
+    )[0].districts
+    setSelectedArea(areaArr)
+    setCheckedArea(
+      areaArr.map((item) => {
+        return {
+          [item]: true
+        }
+      })
+    )
+  }, [selectedCity])
+
   return (
     <div className={styles.stations}>
       <div className={styles.container}>
@@ -92,7 +106,7 @@ const Stations = () => {
               {openDropDown && (
                 <DropDown
                   selectedCity={selectedCity}
-                  onClick={(city) => setSelectedCity(city)}
+                  onClick={(city) => handleSelectCity(city)}
                 />
               )}
             </SelectButton>
@@ -103,8 +117,7 @@ const Stations = () => {
               onChange={(e) => handleCheck(e)}
               checked={checkAll}
             />
-            {selectedCity === '臺北市' &&
-              checkedArea.map((area) => (
+            {checkedArea?.map((area) => (
                 <CheckBox
                   key={Object.keys(area)[0]}
                   name={Object.keys(area)[0]}
