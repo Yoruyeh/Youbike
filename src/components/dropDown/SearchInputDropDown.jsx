@@ -1,6 +1,6 @@
 import styles from './dropDown.module.scss'
 
-const SearchInputDropDown = ({ searchedStation, onClick }) => {
+const SearchInputDropDown = ({ searchedStation, onClick, searchInput }) => {
   return (
     <div className={styles.dropdown}>
       <ul className={styles.list}>
@@ -8,6 +8,12 @@ const SearchInputDropDown = ({ searchedStation, onClick }) => {
           <li
             className={styles.item}
             key={station.id}
+            style={{
+              color:
+                station.cityName.includes(searchInput)
+                  ? '#B5CC22'
+                  : ''
+            }}
             onClick={() => onClick(station.cityName)}
           >
             {station.cityName}

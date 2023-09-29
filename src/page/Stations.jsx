@@ -134,6 +134,7 @@ const Stations = () => {
               {searchedStation?.length > 0 && (
                 <SearchInputDropDown
                   searchedStation={searchedStation}
+                  searchInput={searchInput}
                   onClick={(city) => {
                     setSearchInput(city)
                     setSearchedStation([])
