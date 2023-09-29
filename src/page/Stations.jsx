@@ -4,10 +4,11 @@ import { GetPageTitle, TaiwanCities } from '../utils/helpers'
 import SearchInput from '../components/searchInput/SearchInput'
 import SelectButton from '../components/selectButton/SelectButton'
 import CheckBox from '../components/checkBox/CheckBox'
-import DropDown from '../components/dropDown/DropDown'
+import SelectCityDropDown from '../components/dropDown/SelectCityDropDown'
 import { useEffect, useState } from 'react'
 import BikingImg from '../assets/images/image.png'
 import Main from '../api/process-rawData'
+import SearchInputDropDown from '../components/dropDown/SearchInputDropDown'
 
 const Stations = () => {
   const [openDropDown, setOpenDropDown] = useState(false)
@@ -90,13 +91,15 @@ const Stations = () => {
         <div className={styles.filters}>
           <h1>{GetPageTitle()}</h1>
           <div className={styles.inputWrapper}>
-            <SearchInput placeholder={'搜尋站點'} />
+            <SearchInput placeholder={'搜尋站點'}>
+              <SearchInputDropDown />
+            </SearchInput>
             <SelectButton
               defaultValue={selectedCity}
               onClick={() => setOpenDropDown(!openDropDown)}
             >
               {openDropDown && (
-                <DropDown
+                <SelectCityDropDown
                   selectedCity={selectedCity}
                   onClick={(city) => setSelectedCity(city)}
                 />

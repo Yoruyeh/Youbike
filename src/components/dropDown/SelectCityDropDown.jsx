@@ -1,7 +1,7 @@
 import styles from './dropDown.module.scss'
 import { TaiwanCities } from '../../utils/helpers'
 
-const DropDown = ({ selectedCity, onClick }) => {
+const SelectCityDropDown = ({ selectedCity, onClick }) => {
   return (
     <div className={styles.dropdown}>
       <ul className={styles.list}>
@@ -20,4 +20,4 @@ const DropDown = ({ selectedCity, onClick }) => {
   )
 }
 
-export default DropDown
+export default SelectCityDropDown
