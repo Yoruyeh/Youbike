@@ -17,14 +17,6 @@ const Stations = () => {
   const [checkedArea, setCheckedArea] = useState([])
   const [checkAll, setCheckAll] = useState(true)
   
-  const handleSelectCity = (city) => {
-    setSelectedCity(city)
-    const selected = TaiwanCities.filter(
-      (data) => data.cityName === selectedCity
-    )[0].districts
-    setSelectedArea(selected)
-  }
-
   const handleCheck = (e) => {
     const { value, checked } = e
     if (value === '全部勾選') {
@@ -106,7 +98,7 @@ const Stations = () => {
               {openDropDown && (
                 <DropDown
                   selectedCity={selectedCity}
-                  onClick={(city) => handleSelectCity(city)}
+                  onClick={(city) => setSelectedCity(city)}
                 />
               )}
             </SelectButton>
@@ -118,13 +110,13 @@ const Stations = () => {
               checked={checkAll}
             />
             {checkedArea?.map((area) => (
-                <CheckBox
-                  key={Object.keys(area)[0]}
-                  name={Object.keys(area)[0]}
-                  onChange={(e) => handleCheck(e)}
-                  checked={Object.values(area)[0]}
-                />
-              ))}
+              <CheckBox
+                key={Object.keys(area)[0]}
+                name={Object.keys(area)[0]}
+                onChange={(e) => handleCheck(e)}
+                checked={Object.values(area)[0]}
+              />
+            ))}
           </div>
         </div>
         <div className={styles.image}>
