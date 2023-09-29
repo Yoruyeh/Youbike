@@ -7,7 +7,7 @@ const SelectButton = ({
   return (
     <div className={styles.selectBtn} onClick={onClick}>
       {defaultValue}
-      <ArrowDown />
+        <ArrowDown />
       {children}
     </div>
   )

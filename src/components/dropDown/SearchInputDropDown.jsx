@@ -1,14 +1,18 @@
 import styles from './dropDown.module.scss'
 
-const SearchInputDropDown = () => {
+const SearchInputDropDown = ({ searchedStation, onClick }) => {
   return (
     <div className={styles.dropdown}>
       <ul className={styles.list}>
+        {searchedStation?.map((station) => (
           <li
             className={styles.item}
+            key={station.id}
+            onClick={() => onClick(station.cityName)}
           >
-            1234
+            {station.cityName}
           </li>
+        ))}
       </ul>
     </div>
   )

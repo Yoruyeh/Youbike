@@ -5,7 +5,7 @@ import SearchInput from '../components/searchInput/SearchInput'
 import SelectButton from '../components/selectButton/SelectButton'
 import CheckBox from '../components/checkBox/CheckBox'
 import SelectCityDropDown from '../components/dropDown/SelectCityDropDown'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import BikingImg from '../assets/images/image.png'
 import Main from '../api/process-rawData'
 import SearchInputDropDown from '../components/dropDown/SearchInputDropDown'
@@ -14,9 +14,13 @@ const Stations = () => {
   const [openDropDown, setOpenDropDown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('臺北市')
   const [stationsData, setStationsData] = useState([])
-  const [selectedArea, setSelectedArea] = useState([])
   const [checkedArea, setCheckedArea] = useState([])
   const [checkAll, setCheckAll] = useState(true)
+  const [selectedArea, setSelectedArea] = useState([])
+  const [searchInput, setSearchInput] = useState('')
+  const [searchedStation, setSearchedStation] = useState([])
+  const searchInputRef = useRef(null)
+  const [isFocused, setIsFocused] = useState(false)
   
   const handleCheck = (e) => {
     const { value, checked } = e
@@ -63,6 +67,16 @@ const Stations = () => {
     }
   }
 
+  const handleSearch = (keyword) => {
+    setSearchInput(keyword)
+    if (!keyword) {
+      setSearchedStation([])
+      return
+    }
+    const searched = TaiwanCities.filter(city => city.cityName.includes(keyword))
+    setSearchedStation(searched)
+  }
+
   useEffect(() => {
     const fetchDataAsync = async () => {
       const data = await Main(selectedArea)
@@ -85,14 +99,50 @@ const Stations = () => {
     )
   }, [selectedCity])
 
+  useEffect(() => {
+    const input = searchInputRef.current
+    
+    input.addEventListener('focus', function () {
+      setIsFocused(true)
+    })
+
+    input.addEventListener('blur', function () {
+      setIsFocused(false)
+    })
+
+    return () => {
+      input.removeEventListener('focus', function () {
+        setIsFocused(true)
+      })
+
+      input.removeEventListener('blur', function () {
+        setIsFocused(false)
+      })
+    }
+  }, [])
+
   return (
     <div className={styles.stations}>
       <div className={styles.container}>
         <div className={styles.filters}>
           <h1>{GetPageTitle()}</h1>
           <div className={styles.inputWrapper}>
-            <SearchInput placeholder={'搜尋站點'}>
-              <SearchInputDropDown />
+            <SearchInput
+              searchInputRef={searchInputRef}
+              placeholder={'搜尋站點'}
+              value={searchInput}
+              isFocused={isFocused}
+              onChange={(e) => handleSearch(e.value)}
+            >
+              {searchedStation?.length > 0 && (
+                <SearchInputDropDown
+                  searchedStation={searchedStation}
+                  onClick={(city) => {
+                    setSearchInput(city)
+                    setSearchedStation([])
+                  }}
+                />
+              )}
             </SearchInput>
             <SelectButton
               defaultValue={selectedCity}

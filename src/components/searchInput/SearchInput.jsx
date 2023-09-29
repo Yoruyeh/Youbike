@@ -1,17 +1,29 @@
 import styles from './searchInput.module.scss'
-import { Search } from '../../assets/icons'
+import { Search, Close } from '../../assets/icons'
 
-const SearchInput = ({ placeholder, value, name, onChange, children }) => {
+const SearchInput = ({
+  placeholder,
+  value,
+  onChange,
+  children,
+  searchInputRef,
+  isFocused
+}) => {
   return (
     <div className={styles.search}>
       <input
+        ref={searchInputRef}
         type="text"
         placeholder={placeholder}
         value={value}
-        name={name}
-        onChange={(e) => onChange?.(e)}
+        onChange={(e) => onChange?.(e.target)}
       />
-      <Search />
+      {isFocused && value && (
+        <div className={styles.icon}>
+          <Close />
+        </div>
+      )}
+      {(!isFocused || !value) && <Search />}
       {children}
     </div>
   )
