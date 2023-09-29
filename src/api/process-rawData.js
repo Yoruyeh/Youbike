@@ -35,20 +35,27 @@ const ProcessData = async (rawData) => {
   }
 }
 
-const Main = async (selectedArea) => {
+const Main = async (selectedCity, selectedArea) => {
   try {
     const { data } = await axios.get(
       'https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json'
     )
-    
+
     const processedData = await ProcessData(data)
 
-    const selectedData = selectedArea.length > 0 && selectedArea.reduce((acc, area) => {
-      return acc.concat(processedData.location.filter((data) => data.areaName === area))
-    }, [])
+    if (selectedCity !== processedData.cityName) {
+      return []
+    }
+
+    const selectedData =
+      selectedArea.length > 0 &&
+      selectedArea.reduce((acc, area) => {
+        return acc.concat(
+          processedData.location.filter((data) => data.areaName === area)
+        )
+      }, [])
 
     return selectedData || []
-    
   } catch (error) {
     console.error('[Process Raw Data error]', error)
   }

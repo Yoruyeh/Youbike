@@ -78,11 +78,11 @@ const Stations = () => {
 
   useEffect(() => {
     const fetchDataAsync = async () => {
-      const data = await Main(selectedArea)
+      const data = await Main(selectedCity, selectedArea)
       setStationsData(data)
     }
     fetchDataAsync()
-  }, [selectedArea])
+  }, [selectedCity, selectedArea])
 
   useEffect(() => {
     const areaArr = TaiwanCities.filter(
