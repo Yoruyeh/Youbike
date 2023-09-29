@@ -96,6 +96,7 @@ const Stations = () => {
         }
       })
     )
+    setCheckAll(true)
   }, [selectedCity])
 
    useEffect(() => {
