@@ -13,15 +13,17 @@ const Stations = () => {
   const [openDropDown, setOpenDropDown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('臺北市')
   const [stationsData, setStationsData] = useState([])
-  const [selectedArea, setSelectedArea] = useState([])
+  const [selectedArea, setSelectedArea] = useState(
+    TaipeiDistricts.map((dist) => dist.title)
+  )
   const [checkedArea, setCheckedArea] = useState(
     TaipeiDistricts.map((dist) => {
       return {
-        [dist.title]: false
+        [dist.title]: true
       }
     })
   )
-  const [checkAll, setCheckAll] = useState(false)
+  const [checkAll, setCheckAll] = useState(true)
 
   const handleCheck = (e) => {
     const { value, checked } = e
@@ -62,6 +64,10 @@ const Stations = () => {
       .filter((area) => Object.values(area)[0] === true)
       .map((item) => Object.keys(item)[0])
     setSelectedArea(areas)
+
+    if (areas.length === 13) {
+      setCheckAll(true)
+    }
   }
 
   useEffect(() => {
