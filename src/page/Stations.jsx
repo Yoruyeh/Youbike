@@ -61,7 +61,7 @@ const Stations = () => {
       .map((item) => Object.keys(item)[0])
     setSelectedArea(areas)
 
-    if (areas.length === 13) {
+    if (areas.length === checkedArea.length) {
       setCheckAll(true)
     }
   }
