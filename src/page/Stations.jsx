@@ -77,14 +77,6 @@ const Stations = () => {
   }
 
   useEffect(() => {
-    const fetchDataAsync = async () => {
-      const data = await Main(selectedCity, selectedArea)
-      setStationsData(data)
-    }
-    fetchDataAsync()
-  }, [selectedCity, selectedArea])
-
-  useEffect(() => {
     const areaArr = TaiwanCities.filter(
       (data) => data.cityName === selectedCity
     )[0].districts
@@ -98,6 +90,14 @@ const Stations = () => {
     )
     setCheckAll(true)
   }, [selectedCity])
+
+  useEffect(() => {
+    const fetchDataAsync = async () => {
+      const data = await Main(selectedCity, selectedArea)
+      setStationsData(data)
+    }
+    fetchDataAsync()
+  }, [selectedCity, selectedArea])
 
    useEffect(() => {
      const handleClickOutside = (e) => {

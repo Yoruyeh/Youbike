@@ -3,7 +3,7 @@
 
 .app {
   width: 100vw;
-  height: auto;
+  height: 100vh;
   padding: 0 2rem;
   position: relative;
 
@@ -35,7 +35,6 @@
 
   .opened {
     width: 100vw;
-    height: calc(100vh - 4rem);
     padding: 2rem;
     display: flex;
     flex-direction: column;
